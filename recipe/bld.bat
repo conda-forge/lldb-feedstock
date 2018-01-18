@@ -10,6 +10,7 @@ cmake -G "Ninja" ^
     -DLLVM_INCLUDE_TESTS=OFF ^
     -DLLVM_INCLUDE_DOCS=OFF ^
     -DLLVM_TARGETS_TO_BUILD=X86 ^
+    -DPYTHON_HOME=C:/Python36-x64 ^
     %SRC_DIR%
 
 if errorlevel 1 exit 1
