@@ -14,14 +14,16 @@ Summary: The LLVM Debugger
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/lldb-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/lldb-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/lldb-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/lldb-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/lldb-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/lldb-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/lldb-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/lldb-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/lldb-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/lldb-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/lldb-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/lldb-feedstock/branch/master)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/lldb/badges/version.svg)](https://anaconda.org/conda-forge/lldb)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/lldb/badges/downloads.svg)](https://anaconda.org/conda-forge/lldb)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-lldb-green.svg)](https://anaconda.org/conda-forge/lldb) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/lldb.svg)](https://anaconda.org/conda-forge/lldb) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/lldb.svg)](https://anaconda.org/conda-forge/lldb) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/lldb.svg)](https://anaconda.org/conda-forge/lldb) |
 
 Installing lldb
 ===============
