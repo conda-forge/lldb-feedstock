@@ -13,27 +13,25 @@ source:
     - build_external.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win and py<35]
-  features:
-    - vc14    # [win and py>=35]
 
 requirements:
   build:
-    - toolchain
     - cmake >=3.4.3
     - ninja    # [win]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
     - python
     - llvmdev =={{ version }}
     - clangdev =={{ version }}
-    - libxml2 2.9.*
+    - libxml2
     - swig
     - libedit  # [linux]
-    - vc 14    # [win]
     - libcxx   # [osx]
   run:
     - libedit  # [linux]
-    - vc 14    # [win]
     - libcxx   # [osx]
     - llvmdev =={{ version }}
     - clangdev =={{ version }}
