@@ -6,7 +6,6 @@ package:
   version: {{ version }}
 
 source:
-  fn: lldb-{{ version }}.src.tar.xz
   url: http://releases.llvm.org/{{ version }}/lldb-{{ version }}.src.tar.xz
   sha256: {{ sha256 }}
   patches:
@@ -57,4 +56,3 @@ extra:
   recipe-maintainers:
     - inducer
     - isuruf
-    - xoviat
