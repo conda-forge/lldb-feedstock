@@ -1,16 +1,17 @@
-{% set version = "6.0.0" %}
-{% set sha256 = "46f54c1d7adcd047d87c0179f7b6fa751614f339f4f87e60abceaa45f414d454" %}
+{% set version = "6.0.1" %}
+{% set sha256 = "6b8573841f2f7b60ffab9715c55dceff4f2a44e5a6d590ac189d20e8e7472714" %}
 
 package:
   name: lldb
   version: {{ version }}
 
 source:
-  fn: lldb-{{ version }}.src.tar.xz
   url: http://releases.llvm.org/{{ version }}/lldb-{{ version }}.src.tar.xz
   sha256: {{ sha256 }}
   patches:
-    - build_external.patch
+    # Remove use of private header in LLDB
+    # ref: https://reviews.llvm.org/D41824
+    - D41824.patch
 
 build:
   number: 0
