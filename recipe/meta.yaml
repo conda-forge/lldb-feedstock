@@ -1,16 +1,17 @@
-{% set version = "5.0.0" %}
-{% set sha256 = "c0a0ca32105e9881d86b7ca886220147e686edc97fdb9f3657c6659dc6568b7d" %}
+{% set version = "6.0.1" %}
+{% set sha256 = "6b8573841f2f7b60ffab9715c55dceff4f2a44e5a6d590ac189d20e8e7472714" %}
 
 package:
   name: lldb
   version: {{ version }}
 
 source:
-  fn: lldb-{{ version }}.src.tar.xz
   url: http://releases.llvm.org/{{ version }}/lldb-{{ version }}.src.tar.xz
   sha256: {{ sha256 }}
   patches:
-    - build_external.patch
+    # Remove use of private header in LLDB
+    # ref: https://reviews.llvm.org/D41824
+    - D41824.patch
 
 build:
   number: 1
@@ -55,4 +56,3 @@ extra:
   recipe-maintainers:
     - inducer
     - isuruf
-    - xoviat
