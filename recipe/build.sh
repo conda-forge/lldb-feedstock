@@ -1,6 +1,9 @@
 mkdir build
 cd build
 
+export CC=clang
+export CXX=clang++
+
 cmake \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
   -DCMAKE_PREFIX_PATH=$PREFIX \
