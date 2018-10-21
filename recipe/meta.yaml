@@ -14,7 +14,7 @@ source:
     - D41824.patch
 
 build:
-  number: 0
+  number: 1000
   skip: true  # [win and py<35]
   features:
     - vc14    # [win and py>=35]
