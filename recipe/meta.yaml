@@ -1,5 +1,5 @@
-{% set version = "6.0.1" %}
-{% set sha256 = "6b8573841f2f7b60ffab9715c55dceff4f2a44e5a6d590ac189d20e8e7472714" %}
+{% set version = "8.0.0" %}
+{% set sha256 = "49918b9f09816554a20ac44c5f85a32dc0a7a00759b3259e78064d674eac0373" %}
 
 package:
   name: lldb
