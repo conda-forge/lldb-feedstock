@@ -16,36 +16,30 @@ source:
 build:
   number: 0
   skip: true  # [win and py<35]
-  features:
-    - vc14    # [win and py>=35]
 
 requirements:
   build:
-    - toolchain
+    - {{ compiler('cxx') }}
     - cmake >=3.4.3
     - ninja    # [win]
+  host:
     - python
     - llvmdev =={{ version }}
     - clangdev =={{ version }}
-    - libxml2 2.9.*
     - swig
     - libedit  # [linux]
-    - vc 14    # [win]
-    - libcxx   # [osx]
   run:
     - libedit  # [linux]
-    - vc 14    # [win]
-    - libcxx   # [osx]
+    - python
+  run_constrained:
     - llvmdev =={{ version }}
     - clangdev =={{ version }}
-    - python
 
 test:
   requires:
-    - python {{ environ['PY_VER'] + '*' }}  # [win]
     - cmake >=3.4.3
 
-  commands:
+commands:
     - lldb --version
 
 about:
