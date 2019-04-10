@@ -36,10 +36,7 @@ requirements:
     - clangdev =={{ version }}
 
 test:
-  requires:
-    - cmake >=3.4.3
-
-commands:
+  commands:
     - lldb --version
 
 about:
