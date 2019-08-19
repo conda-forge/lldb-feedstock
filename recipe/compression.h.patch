@@ -1,0 +1,32 @@
+diff --git a/source/Plugins/Process/gdb-remote/GDBRemoteCommunication.cpp b/source/Plugins/Process/gdb-remote/GDBRemoteCommunication.cpp
+index 72c1314a7..eb18649ed 100644
+--- a/source/Plugins/Process/gdb-remote/GDBRemoteCommunication.cpp
++++ b/source/Plugins/Process/gdb-remote/GDBRemoteCommunication.cpp
+@@ -42,11 +42,6 @@
+ #define DEBUGSERVER_BASENAME "lldb-server"
+ #endif
+ 
+-#if defined(__APPLE__)
+-#define HAVE_LIBCOMPRESSION
+-#include <compression.h>
+-#endif
+-
+ #if defined(HAVE_LIBZ)
+ #include <zlib.h>
+ #endif
+diff --git a/source/Plugins/Process/gdb-remote/GDBRemoteCommunicationClient.cpp b/source/Plugins/Process/gdb-remote/GDBRemoteCommunicationClient.cpp
+index 1e12ea6b2..87d679502 100644
+--- a/source/Plugins/Process/gdb-remote/GDBRemoteCommunicationClient.cpp
++++ b/source/Plugins/Process/gdb-remote/GDBRemoteCommunicationClient.cpp
+@@ -37,11 +37,6 @@
+ 
+ #include "llvm/ADT/StringSwitch.h"
+ 
+-#if defined(__APPLE__)
+-#define HAVE_LIBCOMPRESSION
+-#include <compression.h>
+-#endif
+-
+ using namespace lldb;
+ using namespace lldb_private;
+ using namespace lldb_private::process_gdb_remote;
