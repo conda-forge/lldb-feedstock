@@ -22,13 +22,10 @@ jobs:
         CONFIG: linux_python3.7
         UPLOAD_PACKAGES: True
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
-<<<<<<< HEAD
-=======
       linux_python3.8:
         CONFIG: linux_python3.8
         UPLOAD_PACKAGES: True
         DOCKER_IMAGE: condaforge/linux-anvil-comp7
->>>>>>> regro-cf-autotick-bot/rebuild-python3801
   steps:
   # configure qemu binfmt-misc running.  This allows us to run docker containers
   # embedded qemu-static
@@ -40,12 +37,8 @@ jobs:
 
   - script: |
         export CI=azure
-<<<<<<< HEAD
-        .azure-pipelines/run_docker_build.sh
-=======
         export GIT_BRANCH=$BUILD_SOURCEBRANCHNAME
         .scripts/run_docker_build.sh
->>>>>>> regro-cf-autotick-bot/rebuild-python3801
     displayName: Run docker build
     env:
       BINSTAR_TOKEN: $(BINSTAR_TOKEN)
