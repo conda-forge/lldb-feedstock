@@ -2,10 +2,13 @@ channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
+<<<<<<< HEAD
 cxx_compiler:
 - gxx
 cxx_compiler_version:
 - '7'
+=======
+>>>>>>> regro-cf-autotick-bot/rebuild-python3801
 docker_image:
 - condaforge/linux-anvil-comp7
 pin_run_as_build:

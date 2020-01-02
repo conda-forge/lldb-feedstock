@@ -15,11 +15,22 @@ def setup_environment(ns):
 
 
 def run_docker_build(ns):
+<<<<<<< HEAD
     script = glob.glob(".*/run_docker_build.sh")[0]
     subprocess.check_call(script)
 
 def verify_config(ns):
     valid_configs = {os.path.basename(f)[:-5] for f in glob.glob(".ci_support/*.yaml")}
+=======
+    script = ".scripts/run_docker_build.sh"
+    subprocess.check_call([script])
+
+
+def verify_config(ns):
+    valid_configs = {
+        os.path.basename(f)[:-5] for f in glob.glob(".ci_support/*.yaml")
+    }
+>>>>>>> regro-cf-autotick-bot/rebuild-python3801
     print(f"valid configs are {valid_configs}")
     if ns.config in valid_configs:
         print("Using " + ns.config + " configuration")
@@ -39,8 +50,15 @@ def verify_config(ns):
     else:
         raise ValueError("config " + ns.config + " is not valid")
     # Remove the following, as implemented
+<<<<<<< HEAD
     if not ns.config.startswith('linux'):
         raise ValueError(f"only Linux configs currently supported, got {ns.config}")
+=======
+    if not ns.config.startswith("linux"):
+        raise ValueError(
+            f"only Linux configs currently supported, got {ns.config}"
+        )
+>>>>>>> regro-cf-autotick-bot/rebuild-python3801
 
 
 def main(args=None):

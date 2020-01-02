@@ -19,6 +19,12 @@ jobs:
       osx_python3.7:
         CONFIG: osx_python3.7
         UPLOAD_PACKAGES: True
+<<<<<<< HEAD
+=======
+      osx_python3.8:
+        CONFIG: osx_python3.8
+        UPLOAD_PACKAGES: True
+>>>>>>> regro-cf-autotick-bot/rebuild-python3801
 
   steps:
   # TODO: Fast finish on azure pipelines?
@@ -74,8 +80,14 @@ jobs:
 
   - script: |
       source activate base
+<<<<<<< HEAD
       upload_package ./ ./recipe ./.ci_support/${CONFIG}.yaml
     displayName: Upload recipe
+=======
+      export GIT_BRANCH=$BUILD_SOURCEBRANCHNAME
+      upload_package ./ ./recipe ./.ci_support/${CONFIG}.yaml
+    displayName: Upload package
+>>>>>>> regro-cf-autotick-bot/rebuild-python3801
     env:
       BINSTAR_TOKEN: $(BINSTAR_TOKEN)
     condition: not(eq(variables['UPLOAD_PACKAGES'], 'False'))
