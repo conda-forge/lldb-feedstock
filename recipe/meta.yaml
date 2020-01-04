@@ -12,8 +12,6 @@ source:
     # Remove use of private header in LLDB
     # ref https://reviews.llvm.org/D41824
     - D41824.patch
-    # This is fixed in next release
-    - compression.h.patch
 
 build:
   number: 0
