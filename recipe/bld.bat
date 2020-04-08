@@ -11,6 +11,7 @@ cmake -G "Ninja" ^
     -DLLVM_INCLUDE_DOCS=OFF ^
     -DLLVM_TARGETS_TO_BUILD=X86 ^
     -DLLVM_TEMPORARILY_ALLOW_OLD_TOOLCHAIN=ON ^
+    -DLLDB_ENABLE_PYTHON=ON ^
     %SRC_DIR%
 
 if errorlevel 1 exit 1
