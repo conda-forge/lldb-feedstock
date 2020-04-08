@@ -8,10 +8,6 @@ package:
 source:
   url: https://github.com/llvm/llvm-project/releases/download/llvmorg-{{ version }}/lldb-{{ version }}.src.tar.xz
   sha256: {{ sha256 }}
-  patches:
-    # Remove use of private header in LLDB
-    # ref https://reviews.llvm.org/D41824
-    - D41824.patch
 
 build:
   number: 0
