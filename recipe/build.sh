@@ -1,6 +1,10 @@
 mkdir build
 cd build
 
+# Remove dead stripping dylibs as the linker fails to realize that python symbols
+# are missing in liblldb.dylib
+export LDFLAGS=$(echo $LDFLAGS | sed 's/-Wl,-dead_strip_dylibs//g')
+
 if [[ "$target_platform" == osx* ]]; then
   LLDB_USE_SYSTEM_DEBUGSERVER=ON
 else
