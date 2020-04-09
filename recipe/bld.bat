@@ -1,6 +1,8 @@
 mkdir build
 cd build
 
+echo %PATH%
+
 cmake -G "Ninja" ^
     -DCMAKE_BUILD_TYPE="Release" ^
     -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
@@ -13,12 +15,13 @@ cmake -G "Ninja" ^
     -DLLVM_TEMPORARILY_ALLOW_OLD_TOOLCHAIN=ON ^
     -DLLDB_ENABLE_PYTHON=ON ^
     -DLLDB_PYTHON_RELATIVE_PATH=../Lib/site-packages ^
+    -DPYTHON_LIBRARY=%PREFIX%/libs/python3.lib ^
     %SRC_DIR%
 
 if errorlevel 1 exit 1
 
-cmake --build .
+ninja -j%CPU_COUNT% --verbose
 if errorlevel 1 exit 1
 
-cmake --build . --target install
+ninja install
 if errorlevel 1 exit 1
