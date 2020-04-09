@@ -15,8 +15,9 @@ cmake -G "Ninja" ^
     -DLLVM_TEMPORARILY_ALLOW_OLD_TOOLCHAIN=ON ^
     -DLLDB_ENABLE_PYTHON=ON ^
     -DLLDB_PYTHON_RELATIVE_PATH=../Lib/site-packages ^
-    -DPYTHON_LIBRARY=%PREFIX%/libs/python3.lib ^
-    -DPYTHON_INCLUDE_DIRS=%PREFIX%/include ^
+    -DPython3_LIBRARIES=%PREFIX%/libs/python3.lib ^
+    -DPython3_INCLUDE_DIRS=%PREFIX%/include ^
+    -DPYTHON_HOME=%PREFIX%
     %SRC_DIR%
 
 if errorlevel 1 exit 1
