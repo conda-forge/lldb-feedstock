@@ -26,14 +26,13 @@ requirements:
     - clangdev =={{ version }}
     - llvm =={{ version }}
     - swig
-    - libedit  # [linux]
     - ncurses  # [not win]
-    - editline  # [not win]
+    - libedit  # [not win]
     - libxml2
     - xz
     - six
   run:
-    - libedit  # [linux]
+    - libedit  # [not win]
     - python
     - six
   run_constrained:
