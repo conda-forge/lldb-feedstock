@@ -1,6 +1,12 @@
 mkdir build
 cd build
 
+if [[ "$target_platform" == osx* ]]; then
+  LLDB_USE_SYSTEM_DEBUGSERVER=ON
+else
+  LLDB_USE_SYSTEM_DEBUGSERVER=OFF
+fi
+
 cmake \
   -G Ninja \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
@@ -11,7 +17,7 @@ cmake \
   -DLLDB_ENABLE_LIBXML2=ON \
   -DLLDB_ENABLE_LIBXML2=ON \
   -DLLDB_ENABLE_TESTS=OFF \
-  -DLLDB_USE_SYSTEM_DEBUGSERVER=ON \
+  -DLLDB_USE_SYSTEM_DEBUGSERVER=$LLDB_USE_SYSTEM_DEBUGSERVER \
   ..
 
 ninja -j${CPU_COUNT}
