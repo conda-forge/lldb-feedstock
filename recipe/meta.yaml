@@ -36,9 +36,10 @@ requirements:
     - clangdev =={{ version }}
 
 test:
+  imports:
+    - lldb
   commands:
     - lldb --version
-    - env PYTHONPATH=$(./build/bin/lldb -P) python -c 'import lldb'
 
 about:
   home: http://llvm.org/
