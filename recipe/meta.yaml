@@ -35,6 +35,7 @@ requirements:
   run:
     - libedit  # [linux]
     - python
+    - six
   run_constrained:
     - llvmdev =={{ version }}
     - clangdev =={{ version }}
