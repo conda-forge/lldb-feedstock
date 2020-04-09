@@ -19,6 +19,7 @@ requirements:
     - {{ compiler('cxx') }}
     - cmake >=3.4.3
     - ninja
+    - six
   host:
     - python
     - llvmdev =={{ version }}
