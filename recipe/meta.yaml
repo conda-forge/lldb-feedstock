@@ -19,7 +19,6 @@ requirements:
     - {{ compiler('cxx') }}
     - cmake >=3.4.3
     - ninja
-    - six
   host:
     - python
     - llvmdev =={{ version }}
@@ -30,6 +29,7 @@ requirements:
     - ncurses  # [not win]
     - editline  # [not win]
     - libxml2
+    - six
   run:
     - libedit  # [linux]
     - python
