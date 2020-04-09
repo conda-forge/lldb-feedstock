@@ -20,5 +20,5 @@ cmake \
   -DLLDB_USE_SYSTEM_DEBUGSERVER=$LLDB_USE_SYSTEM_DEBUGSERVER \
   ..
 
-ninja -j${CPU_COUNT}
+ninja -j${CPU_COUNT} --verbose
 ninja install
