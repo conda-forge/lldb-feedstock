@@ -32,6 +32,7 @@ requirements:
     - xz
     - six
   run:
+    - ncurses  # [not win]
     - libedit  # [not win]
     - python
     - six
