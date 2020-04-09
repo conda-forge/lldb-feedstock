@@ -29,6 +29,7 @@ requirements:
     - ncurses  # [not win]
     - editline  # [not win]
     - libxml2
+    - xz
     - six
   run:
     - libedit  # [linux]
