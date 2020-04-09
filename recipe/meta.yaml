@@ -8,7 +8,9 @@ package:
 source:
   url: https://github.com/llvm/llvm-project/releases/download/llvmorg-{{ version }}/lldb-{{ version }}.src.tar.xz
   sha256: {{ sha256 }}
-
+  patches:
+    # Fix Python and Mac support
+    - python-mac.patch
 build:
   number: 0
   # Windows and python 3.7 not compatible
