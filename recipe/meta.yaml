@@ -13,7 +13,7 @@ source:
     - python-mac.patch
 build:
   number: 0
-  skip: true
+  skip: true  # [win and vc<14]
 
 requirements:
   build:
