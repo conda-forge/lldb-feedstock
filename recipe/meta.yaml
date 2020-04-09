@@ -13,8 +13,7 @@ source:
     - python-mac.patch
 build:
   number: 0
-  # Windows and python 3.7 not compatible
-  skip: true  # [win and py==37]
+  skip: true
 
 requirements:
   build:
