@@ -17,13 +17,16 @@ requirements:
   build:
     - {{ compiler('cxx') }}
     - cmake >=3.4.3
-    - ninja    # [win]
+    - ninja
   host:
     - python
     - llvmdev =={{ version }}
     - clangdev =={{ version }}
     - swig
     - libedit  # [linux]
+    - ncurses
+    - editline
+    - libxml2
   run:
     - libedit  # [linux]
     - python
