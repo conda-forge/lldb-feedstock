@@ -12,6 +12,7 @@ cmake -G "Ninja" ^
     -DLLVM_TARGETS_TO_BUILD=X86 ^
     -DLLVM_TEMPORARILY_ALLOW_OLD_TOOLCHAIN=ON ^
     -DLLDB_ENABLE_PYTHON=ON ^
+    -DLLDB_PYTHON_RELATIVE_PATH=../Lib/site-packages ^
     %SRC_DIR%
 
 if errorlevel 1 exit 1
