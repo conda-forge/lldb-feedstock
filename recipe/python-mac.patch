@@ -23,9 +23,9 @@ index e0ecf29..35259cf 100644
  else()
 +  target_link_libraries(liblldb INTERFACE ${PYTHON_LIBRARIES})
 +  if ( CMAKE_SYSTEM_NAME MATCHES "Darwin" )
-+    target_link_options(liblldb PRIVATE "-undefined dynamic_lookup")
++    target_link_options(liblldb PRIVATE -undefined dynamic_lookup)
 +  else()
-+    target_link_options(liblldb PRIVATE "-Wl,--unresolved-symbols=ignore-all")
++    target_link_options(liblldb PRIVATE -Wl,--unresolved-symbols=ignore-all)
 +  endif()
    set_target_properties(liblldb
      PROPERTIES
