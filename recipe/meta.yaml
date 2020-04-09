@@ -24,8 +24,8 @@ requirements:
     - clangdev =={{ version }}
     - swig
     - libedit  # [linux]
-    - ncurses
-    - editline
+    - ncurses  # [not win]
+    - editline  # [not win]
     - libxml2
   run:
     - libedit  # [linux]
