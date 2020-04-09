@@ -2,7 +2,6 @@ mkdir build
 cd build
 
 cmake \
-  -B ./build \
   -G Ninja \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
   -DCMAKE_PREFIX_PATH=$PREFIX \
@@ -15,5 +14,5 @@ cmake \
   -DLLDB_USE_SYSTEM_DEBUGSERVER=ON \
   ..
 
-cd build
-ninja lldb
+ninja -j${CPU_COUNT}
+ninja install
