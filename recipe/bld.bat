@@ -17,7 +17,7 @@ cmake -G "Ninja" ^
     -DLLDB_PYTHON_RELATIVE_PATH=../Lib/site-packages ^
     -DPython3_LIBRARIES=%PREFIX%/libs/python3.lib ^
     -DPython3_INCLUDE_DIRS=%PREFIX%/include ^
-    -DPYTHON_HOME=%PREFIX%
+    -DPYTHON_HOME=%PREFIX% ^
     %SRC_DIR%
 
 if errorlevel 1 exit 1
