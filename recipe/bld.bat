@@ -17,7 +17,7 @@ cmake -G "Ninja" ^
     -DLLDB_PYTHON_RELATIVE_PATH=../Lib/site-packages ^
     -DPYTHON_HOME=%PREFIX% ^
     -DLLDB_EMBED_PYTHON_HOME=OFF ^
-    -DPYTHON_LIBRARIES=%PREFIX%/libs/python3.lib ^
+    -DPYTHON_LIBRARIES=%PREFIX%/libs/python%PY_VER%.lib ^
     -DPYTHON_INCLUDE_DIRS=%PREFIX%/include ^
     -DPYTHON_EXECUTABLE=%PREFIX%/python.exe ^
     -DSWIG_EXECUTABLE=%LIBRARY_BIN%/swig.exe ^
