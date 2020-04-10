@@ -1,16 +1,30 @@
 mkdir build
 cd build
 
+# Remove dead stripping dylibs as the linker fails to realize that python symbols
+# are missing in liblldb.dylib
+export LDFLAGS=$(echo $LDFLAGS | sed 's/-Wl,-dead_strip_dylibs//g')
+
+if [[ "$target_platform" == osx* ]]; then
+  LLDB_USE_SYSTEM_DEBUGSERVER=ON
+else
+  LLDB_USE_SYSTEM_DEBUGSERVER=OFF
+fi
+
 cmake \
+  -G Ninja \
   -DCMAKE_INSTALL_PREFIX=$PREFIX \
-  -DCMAKE_BUILD_TYPE=Release \
-  -DLLVM_ENABLE_RTTI=ON \
-  -DLLVM_INCLUDE_TESTS=OFF \
-  -DLLVM_INCLUDE_UTILS=OFF \
-  -DLLVM_INCLUDE_DOCS=OFF \
-  -DLLVM_INCLUDE_EXAMPLES=OFF \
-  -DLLDB_CODESIGN_IDENTITY="" \
+  -DCMAKE_PREFIX_PATH=$PREFIX \
+  -DLLDB_ENABLE_PYTHON=ON \
+  -DLLDB_ENABLE_LIBEDIT=ON \
+  -DLLDB_ENABLE_CURSES=ON \
+  -DLLDB_ENABLE_LZMA=ON \
+  -DLLDB_ENABLE_LIBXML2=ON \
+  -DLLDB_ENABLE_TESTS=OFF \
+  -DLLDB_USE_SYSTEM_DEBUGSERVER=$LLDB_USE_SYSTEM_DEBUGSERVER \
+  -DCURSES_LIBRARY=$PREFIX/lib/libncurses$SHLIB_EXT \
+  -DHAVE_LIBCOMPRESSION=NO \
   ..
 
-make -j${CPU_COUNT}
-make install
+ninja -j${CPU_COUNT} --verbose
+ninja install

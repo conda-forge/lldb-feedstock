@@ -1,50 +1,48 @@
-{% set version = "6.0.1" %}
-{% set sha256 = "6b8573841f2f7b60ffab9715c55dceff4f2a44e5a6d590ac189d20e8e7472714" %}
+{% set version = "10.0.0" %}
+{% set sha256 = "dd1ffcb42ed033f5167089ec4c6ebe84fbca1db4a9eaebf5c614af09d89eb135" %}
 
 package:
   name: lldb
   version: {{ version }}
 
 source:
-  url: http://releases.llvm.org/{{ version }}/lldb-{{ version }}.src.tar.xz
+  url: https://github.com/llvm/llvm-project/releases/download/llvmorg-{{ version }}/lldb-{{ version }}.src.tar.xz
   sha256: {{ sha256 }}
   patches:
-    # Remove use of private header in LLDB
-    # ref: https://reviews.llvm.org/D41824
-    - D41824.patch
-
+    # Fix Python and Mac support
+    - python-mac.patch
 build:
   number: 0
-  skip: true  # [win and py<35]
-  features:
-    - vc14    # [win and py>=35]
+  skip: true  # [win and vc<14]
 
 requirements:
   build:
-    - toolchain
+    - {{ compiler('cxx') }}
     - cmake >=3.4.3
-    - ninja    # [win]
+    - ninja
+  host:
     - python
     - llvmdev =={{ version }}
     - clangdev =={{ version }}
-    - libxml2 2.9.*
+    - llvm =={{ version }}
     - swig
-    - libedit  # [linux]
-    - vc 14    # [win]
-    - libcxx   # [osx]
+    - ncurses  # [not win]
+    - libedit  # [not win]
+    - libxml2
+    - xz
+    - six
   run:
-    - libedit  # [linux]
-    - vc 14    # [win]
-    - libcxx   # [osx]
+    - ncurses  # [not win]
+    - libedit  # [not win]
+    - python
+    - six
+  run_constrained:
     - llvmdev =={{ version }}
     - clangdev =={{ version }}
-    - python
 
 test:
-  requires:
-    - python {{ environ['PY_VER'] + '*' }}  # [win]
-    - cmake >=3.4.3
-
+  imports:
+    - lldb
   commands:
     - lldb --version
 
