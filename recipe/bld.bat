@@ -15,7 +15,12 @@ cmake -G "Ninja" ^
     -DLLVM_TEMPORARILY_ALLOW_OLD_TOOLCHAIN=ON ^
     -DLLDB_ENABLE_PYTHON=ON ^
     -DLLDB_PYTHON_RELATIVE_PATH=../Lib/site-packages ^
-    -DPython3_FIND_STRATEGY=LOCATION ^
+    -DPYTHON_HOME=%PREFIX% ^
+    -DLLDB_EMBED_PYTHON_HOME=OFF ^
+    -DPYTHON_LIBRARIES=%PREFIX%/libs/python3.lib ^
+    -DPYTHON_INCLUDE_DIRS=%PREFIX%/include ^
+    -DPYTHON_EXECUTABLE=%PREFIX%/python.exe ^
+    -DSWIG_EXECUTABLE=%LIBRARY_BIN%/swig.exe ^
     %SRC_DIR%
 
 if errorlevel 1 exit 1
