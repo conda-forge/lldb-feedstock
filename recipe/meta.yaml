@@ -1,5 +1,5 @@
-{% set version = "10.0.0" %}
-{% set sha256 = "dd1ffcb42ed033f5167089ec4c6ebe84fbca1db4a9eaebf5c614af09d89eb135" %}
+{% set version = "11.0.1" %}
+{% set sha256 = "e8d38917d079356fc1200676dfb370e16f3ee9cbdd092dd31e59d080ac5ef2fb" %}
 
 package:
   name: lldb
@@ -12,7 +12,7 @@ source:
     # Fix Python and Mac support
     - python-mac.patch
 build:
-  number: 1
+  number: 0
   skip: true  # [win and vc<14]
 
 requirements:
