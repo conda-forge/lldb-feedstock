@@ -1,3 +1,5 @@
+@echo on
+
 mkdir build
 cd build
 
@@ -23,11 +25,10 @@ cmake -G "Ninja" ^
     -DPYTHON_EXECUTABLE=%PREFIX%/python.exe ^
     -DSWIG_EXECUTABLE=%LIBRARY_BIN%/swig.exe ^
     %SRC_DIR%
-
-if errorlevel 1 exit 1
+if %ERRORLEVEL% neq 0 exit 1
 
 ninja -j%CPU_COUNT% --verbose
-if errorlevel 1 exit 1
+if %ERRORLEVEL% neq 0 exit 1
 
 ninja install
-if errorlevel 1 exit 1
+if %ERRORLEVEL% neq 0 exit 1
