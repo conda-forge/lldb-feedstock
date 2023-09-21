@@ -1,0 +1,49 @@
+From aeb6f3d0213e0a40f5034935695c71d080535381 Mon Sep 17 00:00:00 2001
+From: Isuru Fernando <isuruf@gmail.com>
+Date: Thu, 9 Apr 2020 18:08:39 +0000
+Subject: [PATCH] Remove linking liblldb to libpython
+
+liblldb doubles as an extension module too, but python
+executable is linked to static python. When the extension module
+is loaded both the shared libpython and the static libpython symbols
+are loaded which leads to a crash in OSX.
+
+To fix this, dependence on PYTHON_LIBRARY is removed from liblldb
+and added to its interfaces to make sure the executables like
+lldb works fine.
+
+Thanks to feedback from @saulshanabrook
+---
+ source/API/CMakeLists.txt                              | 6 ++++++
+ source/Plugins/ScriptInterpreter/Python/CMakeLists.txt | 1 -
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/source/API/CMakeLists.txt b/source/API/CMakeLists.txt
+index 46307b487a54..90481f65a328 100644
+--- a/source/API/CMakeLists.txt
++++ b/source/API/CMakeLists.txt
+@@ -179,6 +179,12 @@ if (NOT CMAKE_SYSTEM_NAME MATCHES "Windows")
+ endif()
+ 
+ if (NOT MSVC)
++  target_link_libraries(liblldb INTERFACE ${PYTHON_LIBRARIES})
++  if ( CMAKE_SYSTEM_NAME MATCHES "Darwin" )
++    target_link_options(liblldb PRIVATE -undefined dynamic_lookup)
++  else()
++    target_link_options(liblldb PRIVATE "-Wl,--unresolved-symbols=ignore-all")
++  endif()
+   set_target_properties(liblldb
+     PROPERTIES
+     OUTPUT_NAME lldb
+diff --git a/source/Plugins/ScriptInterpreter/Python/CMakeLists.txt b/source/Plugins/ScriptInterpreter/Python/CMakeLists.txt
+index 1dd6282876f4..02eb569db03f 100644
+--- a/source/Plugins/ScriptInterpreter/Python/CMakeLists.txt
++++ b/source/Plugins/ScriptInterpreter/Python/CMakeLists.txt
+@@ -29,7 +29,6 @@ add_lldb_library(lldbPluginScriptInterpreterPython PLUGIN
+     lldbHost
+     lldbInterpreter
+     lldbTarget
+-    ${Python3_LIBRARIES}
+     ${LLDB_LIBEDIT_LIBS}
+ 
+   LINK_COMPONENTS

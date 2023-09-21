@@ -9,7 +9,7 @@ source:
   sha256: 2ac41160b0bdc74bf72d4f9a3702f290f7c09998da6fb73281cc497f4ddbe130
   patches:
     # Fix Python and Mac support
-    - patches/python-mac.patch
+    - patches/0001-Remove-linking-liblldb-to-libpython.patch
 
 build:
   number: 0
