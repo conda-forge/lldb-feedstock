@@ -1,5 +1,4 @@
 {% set version = "10.0.0" %}
-{% set sha256 = "dd1ffcb42ed033f5167089ec4c6ebe84fbca1db4a9eaebf5c614af09d89eb135" %}
 
 package:
   name: lldb
@@ -7,13 +6,13 @@ package:
 
 source:
   url: https://github.com/llvm/llvm-project/releases/download/llvmorg-{{ version }}/lldb-{{ version }}.src.tar.xz
-  sha256: {{ sha256 }}
+  sha256: dd1ffcb42ed033f5167089ec4c6ebe84fbca1db4a9eaebf5c614af09d89eb135
   patches:
     # Fix Python and Mac support
-    - python-mac.patch
+    - patches/python-mac.patch
+
 build:
   number: 3
-  skip: true  # [win and vc<14]
 
 requirements:
   build:
