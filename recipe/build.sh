@@ -27,7 +27,7 @@ cmake \
   -DLLDB_USE_SYSTEM_DEBUGSERVER=$LLDB_USE_SYSTEM_DEBUGSERVER \
   -DCURSES_LIBRARY=$PREFIX/lib/libncurses$SHLIB_EXT \
   -DHAVE_LIBCOMPRESSION=NO \
-  ..
+  ../lldb
 
 ninja -j${CPU_COUNT} --verbose
 ninja install

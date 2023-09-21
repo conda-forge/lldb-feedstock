@@ -24,7 +24,7 @@ cmake -G "Ninja" ^
     -DPYTHON_INCLUDE_DIRS=%PREFIX%/include ^
     -DPYTHON_EXECUTABLE=%PREFIX%/python.exe ^
     -DSWIG_EXECUTABLE=%LIBRARY_BIN%/swig.exe ^
-    %SRC_DIR%
+    %SRC_DIR%\lldb
 if %ERRORLEVEL% neq 0 exit 1
 
 ninja -j%CPU_COUNT% --verbose

@@ -14,14 +14,14 @@ lldb works fine.
 
 Thanks to feedback from @saulshanabrook
 ---
- source/API/CMakeLists.txt                              | 6 ++++++
- source/Plugins/ScriptInterpreter/Python/CMakeLists.txt | 1 -
+ lldb/source/API/CMakeLists.txt                              | 6 ++++++
+ lldb/source/Plugins/ScriptInterpreter/Python/CMakeLists.txt | 1 -
  2 files changed, 6 insertions(+), 1 deletion(-)
 
-diff --git a/source/API/CMakeLists.txt b/source/API/CMakeLists.txt
+diff --git a/lldb/source/API/CMakeLists.txt b/lldb/source/API/CMakeLists.txt
 index 46307b487a54..90481f65a328 100644
---- a/source/API/CMakeLists.txt
-+++ b/source/API/CMakeLists.txt
+--- a/lldb/source/API/CMakeLists.txt
++++ b/lldb/source/API/CMakeLists.txt
 @@ -179,6 +179,12 @@ if (NOT CMAKE_SYSTEM_NAME MATCHES "Windows")
  endif()
  
@@ -35,10 +35,10 @@ index 46307b487a54..90481f65a328 100644
    set_target_properties(liblldb
      PROPERTIES
      OUTPUT_NAME lldb
-diff --git a/source/Plugins/ScriptInterpreter/Python/CMakeLists.txt b/source/Plugins/ScriptInterpreter/Python/CMakeLists.txt
+diff --git a/lldb/source/Plugins/ScriptInterpreter/Python/CMakeLists.txt b/lldb/source/Plugins/ScriptInterpreter/Python/CMakeLists.txt
 index 1dd6282876f4..02eb569db03f 100644
---- a/source/Plugins/ScriptInterpreter/Python/CMakeLists.txt
-+++ b/source/Plugins/ScriptInterpreter/Python/CMakeLists.txt
+--- a/lldb/source/Plugins/ScriptInterpreter/Python/CMakeLists.txt
++++ b/lldb/source/Plugins/ScriptInterpreter/Python/CMakeLists.txt
 @@ -29,7 +29,6 @@ add_lldb_library(lldbPluginScriptInterpreterPython PLUGIN
      lldbHost
      lldbInterpreter
