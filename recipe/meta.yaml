@@ -29,6 +29,8 @@ requirements:
     - libedit  # [not win]
     - libxml2
     - xz
+    - zlib
+    - zstd
     - six
   run:
     - ncurses  # [not win]
