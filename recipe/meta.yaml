@@ -16,6 +16,12 @@ build:
 
 requirements:
   build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - swig                                   # [build_platform != target_platform]
+    - zlib                                   # [build_platform != target_platform]
+    - llvmdev =={{ version }}                # [build_platform != target_platform]
+    - clangdev =={{ version }}               # [build_platform != target_platform]
     - {{ compiler('cxx') }}
     - cmake >=3.4.3
     - ninja
