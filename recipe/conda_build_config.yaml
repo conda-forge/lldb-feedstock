@@ -1,3 +1,6 @@
+# Required for os/log.h
+MACOSX_SDK_VERSION:        # [osx and x86_64]
+  - "10.12"                # [osx and x86_64]
 c_compiler:         # [osx and arm64]
   - clang_bootstrap # [osx and arm64]
 cxx_compiler:       # [osx and arm64]
