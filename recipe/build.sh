@@ -1,8 +1,8 @@
 #!/bin/bash
 set -ex
 
-mkdir build
-cd build
+mkdir -p build
+pushd build
 
 # Remove dead stripping dylibs as the linker fails to realize that python symbols
 # are missing in liblldb.dylib
@@ -25,6 +25,7 @@ cmake ${CMAKE_ARGS} \
   -DLLDB_USE_SYSTEM_DEBUGSERVER=$LLDB_USE_SYSTEM_DEBUGSERVER \
   -DCURSES_LIBRARY=$PREFIX/lib/libncurses$SHLIB_EXT \
   -DPython3_ROOT=$PREFIX \
+  -DPython3_EXECUTABLE=$PREFIX/bin/python \
   -DHAVE_LIBCOMPRESSION=NO \
   ../lldb
 
