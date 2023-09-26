@@ -24,3 +24,7 @@ target_platform:
 - linux-64
 xz:
 - '5'
+zlib:
+- '1.2'
+zstd:
+- '1.5'
