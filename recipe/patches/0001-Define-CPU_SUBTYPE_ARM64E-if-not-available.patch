@@ -1,0 +1,27 @@
+From 39a58ef539a213f356dd1d41a92a9096c4e4fc47 Mon Sep 17 00:00:00 2001
+From: "Uwe L. Korn" <uwe.korn@quantco.com>
+Date: Wed, 27 Sep 2023 08:59:14 +0200
+Subject: [PATCH] Define CPU_SUBTYPE_ARM64E if not available
+
+---
+ lldb/source/Host/macosx/objcxx/HostInfoMacOSX.mm | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/lldb/source/Host/macosx/objcxx/HostInfoMacOSX.mm b/lldb/source/Host/macosx/objcxx/HostInfoMacOSX.mm
+index 5a39ed370..dc1e0a054 100644
+--- a/lldb/source/Host/macosx/objcxx/HostInfoMacOSX.mm
++++ b/lldb/source/Host/macosx/objcxx/HostInfoMacOSX.mm
+@@ -58,6 +58,10 @@
+ #define CPU_TYPE_ARM64_32 (CPU_TYPE_ARM | CPU_ARCH_ABI64_32)
+ #endif
+ 
++#ifndef CPU_SUBTYPE_ARM64E
++#define CPU_SUBTYPE_ARM64E ((cpu_subtype_t)2)
++#endif
++
+ #include <TargetConditionals.h> // for TARGET_OS_TV, TARGET_OS_WATCH
+ 
+ using namespace lldb_private;
+-- 
+2.39.3 (Apple Git-145)
+
