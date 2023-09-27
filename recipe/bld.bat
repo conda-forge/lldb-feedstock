@@ -6,6 +6,8 @@ cd build
 echo %PATH%
 set PY_VER_NO_DOT=%PY_VER:.=%
 
+set "PREFIX_CYG=%PREFIX:\=/%"
+
 cmake -G "Ninja" ^
     -DCMAKE_BUILD_TYPE="Release" ^
     -DCMAKE_PREFIX_PATH=%LIBRARY_PREFIX% ^
@@ -21,10 +23,10 @@ cmake -G "Ninja" ^
     -DPython3_HOME=%PREFIX% ^
     -DPython3_ROOT=%PREFIX% ^
     -DLLDB_EMBED_PYTHON_HOME=OFF ^
-    -DPython3_LIBRARIES=%PREFIX%\libs\python%PY_VER_NO_DOT%.lib ^
-    -DPython3_INCLUDE_DIRS=%PREFIX%\include ^
-    -DPython3_EXECUTABLE=%PREFIX%\python.exe ^
-    -DSWIG_EXECUTABLE=%LIBRARY_BIN%\swig.exe ^
+    -DPython3_LIBRARIES=%PREFIX_CYG%/libs/python%PY_VER_NO_DOT%.lib ^
+    -DPython3_INCLUDE_DIRS=%PREFIX_CYG%/include ^
+    -DPython3_EXECUTABLE=%PREFIX_CYG%/python.exe ^
+    -DSWIG_EXECUTABLE=%LIBRARY_BIN%/swig.exe ^
     %SRC_DIR%\lldb
 if %ERRORLEVEL% neq 0 exit 1
 
