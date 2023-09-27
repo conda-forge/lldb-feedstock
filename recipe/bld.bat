@@ -17,14 +17,14 @@ cmake -G "Ninja" ^
     -DLLVM_TARGETS_TO_BUILD=X86 ^
     -DLLVM_TEMPORARILY_ALLOW_OLD_TOOLCHAIN=ON ^
     -DLLDB_ENABLE_PYTHON=ON ^
-    -DLLDB_PYTHON_RELATIVE_PATH=../Lib/site-packages ^
+    -DLLDB_PYTHON_RELATIVE_PATH=..\Lib\site-packages ^
     -DPython3_HOME=%PREFIX% ^
     -DPython3_ROOT=%PREFIX% ^
     -DLLDB_EMBED_PYTHON_HOME=OFF ^
-    -DPython3_LIBRARIES=%PREFIX%/libs/python%PY_VER_NO_DOT%.lib ^
-    -DPython3_INCLUDE_DIRS=%PREFIX%/include ^
-    -DPython3_EXECUTABLE=%PREFIX%/python.exe ^
-    -DSWIG_EXECUTABLE=%LIBRARY_BIN%/swig.exe ^
+    -DPython3_LIBRARIES=%PREFIX%\libs\python%PY_VER_NO_DOT%.lib ^
+    -DPython3_INCLUDE_DIRS=%PREFIX%\include ^
+    -DPython3_EXECUTABLE=%PREFIX%\python.exe ^
+    -DSWIG_EXECUTABLE=%LIBRARY_BIN%\swig.exe ^
     %SRC_DIR%\lldb
 if %ERRORLEVEL% neq 0 exit 1
 
