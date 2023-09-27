@@ -1,6 +1,7 @@
-# Required for os/log.h
+# Requires 10.12 for os/log.h
+# Requires 10.13 for SecuritySessionId
 MACOSX_SDK_VERSION:        # [osx and x86_64]
-  - "10.12"                # [osx and x86_64]
+  - "10.13"                # [osx and x86_64]
 c_compiler:         # [osx and arm64]
   - clang_bootstrap # [osx and arm64]
 cxx_compiler:       # [osx and arm64]
