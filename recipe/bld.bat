@@ -23,14 +23,14 @@ cmake -G "Ninja" ^
     -DPython3_HOME=%PREFIX% ^
     -DPython3_ROOT=%PREFIX% ^
     -DLLDB_EMBED_PYTHON_HOME=OFF ^
-    -DPython3_LIBRARIES=%PREFIX_CYG%/libs/python%PY_VER_NO_DOT%.lib ^
-    -DPython3_INCLUDE_DIRS=%PREFIX_CYG%/include ^
-    -DPython3_EXECUTABLE=%PREFIX_CYG%/python.exe ^
+    -DPython3_LIBRARIES:FILEPATH=%PREFIX_CYG%/libs/python%PY_VER_NO_DOT%.lib ^
+    -DPython3_INCLUDE_DIRS:PATH=%PREFIX_CYG%/include ^
+    -DPython3_EXECUTABLE:FILEPATH=%PREFIX_CYG%/python.exe ^
     -DSWIG_EXECUTABLE=%LIBRARY_BIN%/swig.exe ^
     %SRC_DIR%\lldb
 if %ERRORLEVEL% neq 0 exit 1
 
-type CMakeCache.txt
+type build.ninja
 exit 1
 
 ninja -j%CPU_COUNT% --verbose
