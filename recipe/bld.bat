@@ -23,7 +23,7 @@ cmake -G "Ninja" ^
     -DPython3_HOME=%PREFIX% ^
     -DPython3_ROOT=%PREFIX% ^
     -DLLDB_EMBED_PYTHON_HOME=OFF ^
-    -DPython3_LIBRARIES:FILEPATH=%PREFIX_CYG%/libs/python%PY_VER_NO_DOT%.lib ^
+    -DPython3_LIBRARIES:FILEPATH="%PREFIX%\libs\python%PY_VER_NO_DOT%.lib" ^
     -DPython3_INCLUDE_DIRS:PATH=%PREFIX_CYG%/include ^
     -DPython3_EXECUTABLE:FILEPATH=%PREFIX_CYG%/python.exe ^
     -DSWIG_EXECUTABLE=%LIBRARY_BIN%/swig.exe ^
