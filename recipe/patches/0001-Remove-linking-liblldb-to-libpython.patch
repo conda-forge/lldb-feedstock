@@ -1,4 +1,4 @@
-From 5406d68c2f80fdee46db0480a7de14db401d0948 Mon Sep 17 00:00:00 2001
+From ed9e11f2ba546a36acc3ce1315779ded6311a859 Mon Sep 17 00:00:00 2001
 From: Isuru Fernando <isuruf@gmail.com>
 Date: Thu, 9 Apr 2020 18:08:39 +0000
 Subject: [PATCH] Remove linking liblldb to libpython
@@ -16,26 +16,27 @@ lldb works fine.
 
 Thanks to feedback from @saulshanabrook
 ---
- lldb/cmake/modules/AddLLDB.cmake                            | 2 +-
+ lldb/cmake/modules/AddLLDB.cmake                            | 3 +++
  lldb/source/API/CMakeLists.txt                              | 6 ++++++
  lldb/source/Plugins/ScriptInterpreter/Python/CMakeLists.txt | 1 -
- 3 files changed, 7 insertions(+), 2 deletions(-)
+ 3 files changed, 9 insertions(+), 1 deletion(-)
 
 diff --git a/lldb/cmake/modules/AddLLDB.cmake b/lldb/cmake/modules/AddLLDB.cmake
-index a5be4afb4..b663439e3 100644
+index a5be4afb4..e9f03b039 100644
 --- a/lldb/cmake/modules/AddLLDB.cmake
 +++ b/lldb/cmake/modules/AddLLDB.cmake
-@@ -163,7 +163,7 @@ function(add_lldb_executable name)
-     set(pass_NO_INSTALL_RPATH NO_INSTALL_RPATH)
+@@ -164,6 +164,9 @@ function(add_lldb_executable name)
    endif()
  
--  list(APPEND LLVM_LINK_COMPONENTS ${ARG_LINK_COMPONENTS})
-+  list(APPEND LLVM_LINK_COMPONENTS ${ARG_LINK_COMPONENTS} ${Python3_LIBRARIES})
+   list(APPEND LLVM_LINK_COMPONENTS ${ARG_LINK_COMPONENTS})
++  if (NOT MSVC)
++    list(APPEND LLVM_LINK_COMPONENTS ${Python3_LIBRARIES})
++  endif()
    add_llvm_executable(${name}
      ${pass_ENTITLEMENTS}
      ${pass_NO_INSTALL_RPATH}
 diff --git a/lldb/source/API/CMakeLists.txt b/lldb/source/API/CMakeLists.txt
-index 5c922a2ae..db9b9ed21 100644
+index 3e189f387..9d3de7f2e 100644
 --- a/lldb/source/API/CMakeLists.txt
 +++ b/lldb/source/API/CMakeLists.txt
 @@ -180,6 +180,12 @@ if (NOT CMAKE_SYSTEM_NAME MATCHES "Windows")
