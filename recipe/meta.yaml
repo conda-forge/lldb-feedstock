@@ -18,6 +18,7 @@ source:
 
 build:
   number: 0
+  skip: true  # [not win or py<311]
 
 requirements:
   build:
