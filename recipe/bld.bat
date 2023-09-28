@@ -30,6 +30,9 @@ cmake -G "Ninja" ^
     %SRC_DIR%\lldb
 if %ERRORLEVEL% neq 0 exit 1
 
+type CMakeCache.txt
+exit 1
+
 ninja -j%CPU_COUNT% --verbose
 if %ERRORLEVEL% neq 0 exit 1
 
