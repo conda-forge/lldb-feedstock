@@ -24,6 +24,7 @@ if [[ "${target_platform}" != "${build_platform}" ]]; then
   NATIVE_FLAGS="${NATIVE_FLAGS};-DCMAKE_STATIC_LINKER_FLAGS=;-DCMAKE_PREFIX_PATH=$BUILD_PREFIX"
   CMAKE_ARGS="${CMAKE_ARGS} -DCROSS_TOOLCHAIN_FLAGS_NATIVE=${NATIVE_FLAGS}"
 
+  # Calculate relative site-packages path 
   SP_PATH=${SP_DIR//$PREFIX}
   SP_PATH=${SP_PATH:1}
   export CMAKE_ARGS="${CMAKE_ARGS} -DLLVM_TABLEGEN=$BUILD_PREFIX/bin/llvm-tblgen -DLLDB_PYTHON_RELATIVE_PATH=${SP_PATH} -DLLDB_PYTHON_EXE_RELATIVE_PATH=bin/python -DLLDB_PYTHON_EXT_SUFFIX=$(python ../lldb/bindings/python/get-python-config.py LLDB_PYTHON_EXT_SUFFIX) -DNATIVE_LLVM_DIR=$BUILD_PREFIX/lib/cmake/llvm -DNATIVE_Clang_DIR=$BUILD_PREFIX/lib/cmake/clang"
