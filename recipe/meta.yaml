@@ -28,6 +28,7 @@ requirements:
     - {{ compiler('cxx') }}
     - cmake >=3.4.3
     - ninja
+    - sysroot_linux-64 2.17  # [linux64]
   host:
     - python
     - llvmdev =={{ version }}
