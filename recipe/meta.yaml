@@ -13,8 +13,6 @@ source:
     # https://github.com/llvm/llvm-project/issues/59449
     # allows for compiling with older SDKs
     - patches/0001-Define-CPU_SUBTYPE_ARM64E-if-not-available.patch
-    # https://reviews.llvm.org/D156763
-    - patches/6888de118707e6392b46073fc35738804f9f1d80.patch
 
 build:
   number: 0
