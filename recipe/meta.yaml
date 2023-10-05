@@ -17,7 +17,7 @@ source:
     - patches/6888de118707e6392b46073fc35738804f9f1d80.patch
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
