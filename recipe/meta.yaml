@@ -1,4 +1,4 @@
-{% set version = "16.0.6" %}
+{% set version = "17.0.2" %}
 
 package:
   name: lldb
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/llvm/llvm-project/releases/download/llvmorg-{{ version }}/llvm-project-{{ version }}.src.tar.xz
-  sha256: ce5e71081d17ce9e86d7cbcfa28c4b04b9300f8fb7e78422b1feb6bc52c3028e
+  sha256: 351562b14d42fcefcbf00cc1f327680a1062bbbf67a1e1ca6acb64c473b06394
   patches:
     # Fix Python and Mac support
     - patches/0001-Remove-linking-liblldb-to-libpython.patch  # [not win]
