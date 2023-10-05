@@ -1,22 +1,32 @@
-{% set version = "10.0.0" %}
-{% set sha256 = "dd1ffcb42ed033f5167089ec4c6ebe84fbca1db4a9eaebf5c614af09d89eb135" %}
+{% set version = "16.0.6" %}
 
 package:
   name: lldb
   version: {{ version }}
 
 source:
-  url: https://github.com/llvm/llvm-project/releases/download/llvmorg-{{ version }}/lldb-{{ version }}.src.tar.xz
-  sha256: {{ sha256 }}
+  url: https://github.com/llvm/llvm-project/releases/download/llvmorg-{{ version }}/llvm-project-{{ version }}.src.tar.xz
+  sha256: ce5e71081d17ce9e86d7cbcfa28c4b04b9300f8fb7e78422b1feb6bc52c3028e
   patches:
     # Fix Python and Mac support
-    - python-mac.patch
+    - patches/0001-Remove-linking-liblldb-to-libpython.patch  # [not win]
+    # https://github.com/llvm/llvm-project/issues/59449
+    # allows for compiling with older SDKs
+    - patches/0001-Define-CPU_SUBTYPE_ARM64E-if-not-available.patch
+    # https://reviews.llvm.org/D156763
+    - patches/6888de118707e6392b46073fc35738804f9f1d80.patch
+
 build:
-  number: 2
-  skip: true  # [win and vc<14]
+  number: 0
 
 requirements:
   build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - swig                                   # [build_platform != target_platform]
+    - zlib                                   # [build_platform != target_platform]
+    - llvmdev =={{ version }}                # [build_platform != target_platform]
+    - clangdev =={{ version }}               # [build_platform != target_platform]
     - {{ compiler('cxx') }}
     - cmake >=3.4.3
     - ninja
@@ -25,11 +35,14 @@ requirements:
     - llvmdev =={{ version }}
     - clangdev =={{ version }}
     - llvm =={{ version }}
+    - libclang-cpp =={{ version }}
     - swig
     - ncurses  # [not win]
     - libedit  # [not win]
     - libxml2
     - xz
+    - zlib
+    - zstd
     - six
   run:
     - ncurses  # [not win]
@@ -49,9 +62,11 @@ test:
 about:
   home: http://llvm.org/
   license: NCSA
-  license_file: LICENSE.TXT
+  license_file: lldb/LICENSE.TXT
   summary: The LLVM Debugger
 
 extra:
   recipe-maintainers:
     - isuruf
+    - h-vetinari
+    - xhochy
