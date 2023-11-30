@@ -16,6 +16,8 @@ source:
 
 build:
   number: 0
+  # This needs clang-compiler-activation-feedstock build
+  skip: true  # [osx and arm64]
 
 requirements:
   build:
