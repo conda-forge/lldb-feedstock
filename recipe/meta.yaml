@@ -1,4 +1,4 @@
-{% set version = "17.0.6" %}
+{% set version = "18.1.2" %}
 
 package:
   name: lldb
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/llvm/llvm-project/releases/download/llvmorg-{{ version }}/llvm-project-{{ version }}.src.tar.xz
-  sha256: 58a8818c60e6627064f312dbf46c02d9949956558340938b71cf731ad8bc0813
+  sha256: 51073febd91d1f2c3b411d022695744bda322647e76e0b4eb1918229210c48d5
   patches:
     # Fix Python and Mac support
     - patches/0001-Remove-linking-liblldb-to-libpython.patch  # [not win]
@@ -15,7 +15,7 @@ source:
     - patches/0001-Define-CPU_SUBTYPE_ARM64E-if-not-available.patch
 
 build:
-  number: 1
+  number: 0
 
 requirements:
   build:
