@@ -16,6 +16,8 @@ source:
 
 build:
   number: 0
+  # Fatal Python error: PyImport_AppendInittab() may not be called after Py_Initialize()
+  skip: true  # [py>=312]
 
 requirements:
   build:
