@@ -18,6 +18,9 @@ target_platform:
 - win-64
 xz:
 - '5'
+zip_keys:
+- - python
+  - channel_sources
 zlib:
 - '1'
 zstd:
