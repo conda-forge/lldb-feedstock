@@ -5,9 +5,11 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/lldb-feedstock/
 
 Home: http://llvm.org/
 
-Package license: NCSA
+Package license: Apache-2.0 WITH LLVM-exception
 
 Summary: The LLVM Debugger
+
+Development: https://github.com/llvm/llvm-project
 
 Current build status
 ====================

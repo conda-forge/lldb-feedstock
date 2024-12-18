@@ -1,4 +1,4 @@
-{% set version = "19.1.5" %}
+{% set version = "19.1.6" %}
 
 package:
   name: lldb
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-{{ version.replace(".rc", "-rc") }}.tar.gz
-  sha256: e2204b9903cd9d7ee833a2f56a18bef40a33df4793e31cc090906b32cbd8a1f5
+  sha256: f07fdcbb27b2b67aa95e5ddadf45406b33228481c250e65175066d36536a1ee2
   patches:
     # Fix Python and Mac support
     - patches/0001-Remove-linking-liblldb-to-libpython.patch  # [not win]
@@ -15,7 +15,7 @@ source:
     - patches/0002-Define-CPU_SUBTYPE_ARM64E-if-not-available.patch
 
 build:
-  number: 1
+  number: 0
 
 requirements:
   build:
@@ -60,7 +60,8 @@ test:
 
 about:
   home: http://llvm.org/
-  license: NCSA
+  dev_url: https://github.com/llvm/llvm-project
+  license: Apache-2.0 WITH LLVM-exception
   license_file: lldb/LICENSE.TXT
   summary: The LLVM Debugger
 
