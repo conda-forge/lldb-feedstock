@@ -60,7 +60,8 @@ test:
 
 about:
   home: http://llvm.org/
-  license: NCSA
+  dev_url: https://github.com/llvm/llvm-project
+  license: Apache-2.0 WITH LLVM-exception
   license_file: lldb/LICENSE.TXT
   summary: The LLVM Debugger
 
