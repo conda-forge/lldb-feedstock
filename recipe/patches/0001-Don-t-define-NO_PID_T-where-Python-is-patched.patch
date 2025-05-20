@@ -1,0 +1,22 @@
+From 40ba65066665dd915b240ace0b70d80faa2da78b Mon Sep 17 00:00:00 2001
+From: "Uwe L. Korn" <uwe.korn@quantco.com>
+Date: Tue, 20 May 2025 10:39:09 +0200
+Subject: [PATCH] Don't define NO_PID_T where Python is patched
+
+---
+ lldb/source/Plugins/ScriptInterpreter/Python/lldb-python.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lldb/source/Plugins/ScriptInterpreter/Python/lldb-python.h b/lldb/source/Plugins/ScriptInterpreter/Python/lldb-python.h
+index 48f27b09b95c..e2d1c370da7e 100644
+--- a/lldb/source/Plugins/ScriptInterpreter/Python/lldb-python.h
++++ b/lldb/source/Plugins/ScriptInterpreter/Python/lldb-python.h
+@@ -21,7 +21,7 @@
+ // need to ensure this doesn't happen.  At the same time, Python.h will also try
+ // to redefine a bunch of stuff that PosixApi.h defines.  So define it all now
+ // so that PosixApi.h doesn't redefine it.
+-#define NO_PID_T
++// #define NO_PID_T
+ #endif
+ #if defined(__linux__)
+ // features.h will define _POSIX_C_SOURCE if _GNU_SOURCE is defined.  This value
