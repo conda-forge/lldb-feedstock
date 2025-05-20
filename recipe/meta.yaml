@@ -1,4 +1,4 @@
-{% set version = "19.1.7" %}
+{% set version = "20.1.5" %}
 
 package:
   name: lldb
@@ -6,13 +6,15 @@ package:
 
 source:
   url: https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-{{ version.replace(".rc", "-rc") }}.tar.gz
-  sha256: 59abea1c22e64933fad4de1671a61cdb934098793c7a31b333ff58dc41bff36c
+  sha256: 205c436f93a7e185cf9d63ae57e645f23561a4d1bf854f2c5bd78995a43a5c05
   patches:
     # Fix Python and Mac support
     - patches/0001-Remove-linking-liblldb-to-libpython.patch  # [not win]
     # https://github.com/llvm/llvm-project/issues/59449
     # allows for compiling with older SDKs
     - patches/0002-Define-CPU_SUBTYPE_ARM64E-if-not-available.patch
+    # This is needed due to c-f's remove of pid_t in Python: https://github.com/conda-forge/python-feedstock/pull/767
+    - patches/0001-Don-t-define-NO_PID_T-where-Python-is-patched.patch  # [win and py>=311]
 
 build:
   number: 0
