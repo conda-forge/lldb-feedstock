@@ -13,7 +13,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '18'
+- '19'
 liblzma_devel:
 - '5'
 libxml2:
