@@ -17,7 +17,7 @@ source:
     - patches/0001-Don-t-define-NO_PID_T-where-Python-is-patched.patch  # [win and py>=311]
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
