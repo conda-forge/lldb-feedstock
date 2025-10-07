@@ -1,4 +1,4 @@
-{% set version = "21.1.0" %}
+{% set version = "21.1.3" %}
 
 package:
   name: lldb
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-{{ version.replace(".rc", "-rc") }}.tar.gz
-  sha256: fba0618cf8de48ec05880c446edd756a2669157eab9d29949e971c77da10275f
+  sha256: 5bc91fe86bafebc64189465faca1ff35626dcb1b8539a14ae2ec07834c3e8e95
   patches:
     # Fix Python and Mac support
     - patches/0001-Remove-linking-liblldb-to-libpython.patch  # [not win]
@@ -17,7 +17,7 @@ source:
     - patches/0003-Don-t-define-NO_PID_T-where-Python-is-patched.patch  # [win and py>=311]
 
 build:
-  number: 1
+  number: 0
 
 requirements:
   build:
