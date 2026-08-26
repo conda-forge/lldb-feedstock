@@ -13,11 +13,11 @@ channel_targets:
 cxx_compiler:
 - clang_bootstrap
 cxx_compiler_version:
-- '19'
+- '21'
 liblzma_devel:
 - '5'
 libxml2_devel:
-- '2.14'
+- '2.15'
 macos_machine:
 - arm64-apple-darwin20.0.0
 ncurses:
