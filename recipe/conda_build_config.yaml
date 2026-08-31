@@ -3,5 +3,11 @@ c_compiler:         # [osx and arm64]
 cxx_compiler:       # [osx and arm64]
   - clang_bootstrap # [osx and arm64]
 
+is_abi3:
+  - true
+is_python_min:
+  - true
+python:
+  - 3.14.* *_cp314
 python_min:
-  - "3.11"
+  - "3.14"
