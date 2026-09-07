@@ -20,7 +20,8 @@ source:
       then:
         - patches/0003-Don-t-define-NO_PID_T-where-Python-is-patched.patch
         - patches/0004-fix-file-extension-on-windows.patch
-    - patches/0005-lldb-avoid-bare-include-Python.h.patch
+    - if: linux
+      then: patches/0005-lldb-also-build-libedit-integration-with-stable-ABI.patch
 
 build:
   number: 1
