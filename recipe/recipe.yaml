@@ -26,6 +26,7 @@ source:
         - patches/0005-lldb-also-build-libedit-integration-with-stable-ABI.patch
         - patches/0006-disable-python-libedit-bits.patch
         - patches/0007-link-libpython3.so-explicitly.patch
+        - patches/0008-link-liblldb-with-libpython-harder.patch
 
 build:
   number: 1

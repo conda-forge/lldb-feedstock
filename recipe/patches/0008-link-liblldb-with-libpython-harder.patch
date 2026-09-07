@@ -1,0 +1,26 @@
+From 70fcaefa8b6f98d74a5945a688003c6a0d797a0e Mon Sep 17 00:00:00 2001
+From: "H. Vetinari" <h.vetinari@gmx.com>
+Date: Mon, 7 Sep 2026 18:44:42 +0200
+Subject: [PATCH 8/8] link liblldb with libpython, harder
+
+---
+ lldb/source/API/CMakeLists.txt | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/lldb/source/API/CMakeLists.txt b/lldb/source/API/CMakeLists.txt
+index 9718372920b3..1d512513b9bc 100644
+--- a/lldb/source/API/CMakeLists.txt
++++ b/lldb/source/API/CMakeLists.txt
+@@ -266,11 +266,9 @@ elseif (LLDB_EXPORT_ALL_SYMBOLS)
+ endif()
+ 
+ if(NOT WIN32 OR MINGW)
+-  target_link_libraries(liblldb INTERFACE ${Python3_LIBRARIES})
++  target_link_libraries(liblldb PUBLIC ${Python3_LIBRARIES})
+   if ( CMAKE_SYSTEM_NAME MATCHES "Darwin" )
+     target_link_options(liblldb PRIVATE -undefined dynamic_lookup)
+-  else()
+-    target_link_options(liblldb PRIVATE "-Wl,--unresolved-symbols=ignore-all")
+   endif()
+   set_target_properties(liblldb
+     PROPERTIES

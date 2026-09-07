@@ -1,21 +1,22 @@
-From 8d610b7ef11c565ddd3f9870b9bb026eaea1b37a Mon Sep 17 00:00:00 2001
+From 4a1141c0587c18930b51d98c5b4ffe2b6883484a Mon Sep 17 00:00:00 2001
 From: "H. Vetinari" <h.vetinari@gmx.com>
 Date: Mon, 7 Sep 2026 17:58:36 +0200
-Subject: [PATCH 7/7] link libpython3.so explicitly
+Subject: [PATCH 7/8] link libpython3.so explicitly
 
 ---
- lldb/cmake/modules/AddLLDB.cmake | 1 +
- 1 file changed, 1 insertion(+)
+ lldb/cmake/modules/AddLLDB.cmake | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/lldb/cmake/modules/AddLLDB.cmake b/lldb/cmake/modules/AddLLDB.cmake
-index daf33e219563..3ae5823530f7 100644
+index daf33e219563..65b66f64d401 100644
 --- a/lldb/cmake/modules/AddLLDB.cmake
 +++ b/lldb/cmake/modules/AddLLDB.cmake
-@@ -170,6 +170,7 @@ function(add_lldb_executable name)
+@@ -170,6 +170,8 @@ function(add_lldb_executable name)
    )
  
    target_link_libraries(${name} PRIVATE ${ARG_LINK_LIBS})
 +  target_link_libraries(${name} PRIVATE ${Python3_LIBRARIES})
++  target_link_options(${name} PRIVATE -Wl,--no-as-needed)
    if(WIN32)
      list(FIND ARG_LINK_LIBS liblldb LIBLLDB_INDEX)
      if(NOT LIBLLDB_INDEX EQUAL -1)
