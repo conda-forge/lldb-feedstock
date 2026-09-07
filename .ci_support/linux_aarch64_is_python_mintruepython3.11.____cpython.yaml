@@ -27,9 +27,9 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.13.* *_cp313
+- 3.11.* *_cpython
 python_min:
-- '3.13'
+- '3.11'
 target_platform:
 - linux-aarch64
 zip_keys:
