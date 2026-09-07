@@ -20,8 +20,6 @@ source:
       then: patches/0003-Don-t-define-NO_PID_T-where-Python-is-patched.patch
     - if: win
       then: patches/0004-fix-file-extension-on-windows.patch
-    - if: linux
-      then: patches/0005-avoid-.-folder-in-LLVM_LIBRARY_OUTPUT_INTDIR-that-me.patch
 
 build:
   number: 1
