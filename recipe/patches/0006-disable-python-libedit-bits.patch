@@ -1,7 +1,7 @@
-From 2fdcae506e46dea25633509dfbc01495b9e519d4 Mon Sep 17 00:00:00 2001
+From af8a57a086b770743d29e4fa19ed3178451a92e3 Mon Sep 17 00:00:00 2001
 From: "H. Vetinari" <h.vetinari@gmx.com>
 Date: Mon, 7 Sep 2026 13:52:08 +0200
-Subject: [PATCH 6/6] disable python+libedit bits
+Subject: [PATCH 6/7] disable python+libedit bits
 
 see https://github.com/llvm/llvm-project/issues/221704
 ---

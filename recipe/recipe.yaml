@@ -25,6 +25,7 @@ source:
         # https://github.com/llvm/llvm-project/issues/221704
         - patches/0005-lldb-also-build-libedit-integration-with-stable-ABI.patch
         - patches/0006-disable-python-libedit-bits.patch
+        - patches/0007-link-libpython3.so-explicitly.patch
 
 build:
   number: 1
