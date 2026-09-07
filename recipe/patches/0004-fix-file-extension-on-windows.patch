@@ -1,7 +1,7 @@
 From 7aab4f2cc6284f5312ed10cc4acb65a70d413e17 Mon Sep 17 00:00:00 2001
 From: "H. Vetinari" <h.vetinari@gmx.com>
 Date: Mon, 2 Mar 2026 13:39:13 +1100
-Subject: [PATCH 4/6] fix file extension on windows
+Subject: [PATCH 4/7] fix file extension on windows
 
 ---
  lldb/bindings/python/get-python-config.py | 2 +-
