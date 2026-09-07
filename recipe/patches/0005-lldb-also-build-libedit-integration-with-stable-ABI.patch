@@ -1,7 +1,7 @@
 From 7dc02819ea6234795b0f77908184806d5aacb578 Mon Sep 17 00:00:00 2001
 From: "H. Vetinari" <h.vetinari@gmx.com>
 Date: Mon, 7 Sep 2026 10:28:49 +0200
-Subject: [PATCH 5/5] [lldb] also build libedit integration with stable ABI
+Subject: [PATCH 5/6] [lldb] also build libedit integration with stable ABI
 
 Need to replace include; otherwise, the following defines are not picked up before including `Python.h`
 ```

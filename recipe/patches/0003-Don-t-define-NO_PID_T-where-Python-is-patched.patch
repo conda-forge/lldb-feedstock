@@ -1,7 +1,7 @@
 From 835398c612a58d65d28a33bb74991d0e37e074a5 Mon Sep 17 00:00:00 2001
 From: "Uwe L. Korn" <uwe.korn@quantco.com>
 Date: Tue, 20 May 2025 10:39:09 +0200
-Subject: [PATCH 3/5] Don't define NO_PID_T where Python is patched
+Subject: [PATCH 3/6] Don't define NO_PID_T where Python is patched
 
 ---
  lldb/source/Plugins/ScriptInterpreter/Python/lldb-python.h | 2 +-

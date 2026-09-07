@@ -2,14 +2,3 @@ c_compiler:         # [osx and arm64]
   - clang_bootstrap # [osx and arm64]
 cxx_compiler:       # [osx and arm64]
   - clang_bootstrap # [osx and arm64]
-
-# libedit integration on linux requires PyMem_RawMalloc, which is only part of the stable ABI since 3.13, see
-# https://github.com/llvm/llvm-project/blob/llvmorg-22.1.8/lldb/source/Plugins/ScriptInterpreter/Python/PythonReadline.cpp
-# https://github.com/python/cpython/blob/v3.14.7/Doc/data/stable_abi.dat#L440
-python:                 # [linux]
-  - 3.13.* *_cp313      # [linux]
-python_min:             # [linux]
-  - "3.13"              # [linux]
-# part of python zip; needs to be overridden too
-is_python_min:          # [linux]
-  - true                # [linux]
