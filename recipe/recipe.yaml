@@ -93,7 +93,7 @@ tests:
       - if: unix
         then:
           - readelf -d $PREFIX/lib/liblldb.so | grep NEEDED
-          - readelf -d $PREFIXbin/lldb | grep NEEDED
+          - readelf -d $PREFIX/bin/lldb | grep NEEDED
           - nm -D $PREFIX/lib/libpython3${SHLIB_EXT} | grep ' _Py_Dealloc'
       - lldb --version
       - lldb-argdumper --version
