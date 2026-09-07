@@ -1,0 +1,33 @@
+From 9d308a939f59acda223e2b8de3fe9372552b4ec6 Mon Sep 17 00:00:00 2001
+From: "H. Vetinari" <h.vetinari@gmx.com>
+Date: Mon, 7 Sep 2026 10:28:49 +0200
+Subject: [PATCH 3/3] [lldb] avoid bare `#include Python.h`
+
+otherwise, the following defines are not picked up before including `Python.h`
+```
+```
+which affects whether non-stable-ABI symbols get used.
+---
+ .../Plugins/ScriptInterpreter/Python/PythonReadline.h      | 7 +------
+ 1 file changed, 1 insertion(+), 6 deletions(-)
+
+diff --git a/lldb/source/Plugins/ScriptInterpreter/Python/PythonReadline.h b/lldb/source/Plugins/ScriptInterpreter/Python/PythonReadline.h
+index c9976e79c9d9..e35d55b1f112 100644
+--- a/lldb/source/Plugins/ScriptInterpreter/Python/PythonReadline.h
++++ b/lldb/source/Plugins/ScriptInterpreter/Python/PythonReadline.h
+@@ -9,14 +9,9 @@
+ #ifndef LLDB_SOURCE_PLUGINS_SCRIPTINTERPRETER_PYTHON_PYTHONREADLINE_H
+ #define LLDB_SOURCE_PLUGINS_SCRIPTINTERPRETER_PYTHON_PYTHONREADLINE_H
+ 
+-#include "lldb/Host/Config.h"
++#include "lldb-python.h"
+ 
+ #if LLDB_ENABLE_LIBEDIT && defined(__linux__)
+-// NOTE: Since Python may define some pre-processor definitions which affect the
+-// standard headers on some systems, you must include Python.h before any
+-// standard headers are included.
+-#include "Python.h"
+-
+ // no need to hack into Python's readline module if libedit isn't used.
+ //
+ #define LLDB_USE_LIBEDIT_READLINE_COMPAT_MODULE 1
