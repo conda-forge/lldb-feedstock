@@ -20,12 +20,11 @@ source:
       then:
         - patches/0003-Don-t-define-NO_PID_T-where-Python-is-patched.patch
         - patches/0004-fix-file-extension-on-windows.patch
-    - patches/0005-Run-FindPython3-regardless-of-the-options-passed.patch
     - if: linux
       then:
         # https://github.com/llvm/llvm-project/issues/221704
-        - patches/0006-lldb-also-build-libedit-integration-with-stable-ABI.patch
-        - patches/0007-disable-python-libedit-bits.patch
+        - patches/0005-lldb-also-build-libedit-integration-with-stable-ABI.patch
+        - patches/0006-disable-python-libedit-bits.patch
 
 build:
   number: 1
