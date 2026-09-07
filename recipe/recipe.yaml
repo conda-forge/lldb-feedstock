@@ -45,6 +45,8 @@ requirements:
         - clangdev ==${{ version }}
   host:
     - python
+    # we're linking to `libpython3.{so,dylib}`
+    - libpython
     - if: is_abi3
       then:  python-abi3
     - llvm ==${{ version }}
@@ -63,6 +65,8 @@ requirements:
         - ncurses
   run:
     - python
+    # waiting for run-export, c.f. https://github.com/conda-forge/python-feedstock/pull/928 (+backports)
+    - libpython
     - six
     - if: osx
       # we need to do this manually because clang_bootstrap has no run-export
