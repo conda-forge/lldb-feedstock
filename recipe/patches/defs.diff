@@ -1,0 +1,15 @@
+Remove -z,defs to allow unresolved symbols when building with
+python limited API. `-z,defs` is set by LLVM and several subprojects
+remove it due to the need to have unresolved symbols.
+
+--- lldb/CMakeLists.txt.bak	2026-09-08 09:07:55.810480745 -0700
++++ lldb/CMakeLists.txt	2026-09-08 09:06:01.921195545 -0700
+@@ -45,7 +45,7 @@
+ if(uppercase_CMAKE_BUILD_TYPE STREQUAL "DEBUG" )
+   add_definitions(-DLLDB_CONFIGURATION_DEBUG)
+ endif()
+-
++string(REPLACE "-Wl,-z,defs" "" CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS}")
+ if (WIN32)
+   add_definitions(-D_ENABLE_EXTENDED_ALIGNED_STORAGE)
+   if (NOT MSVC)

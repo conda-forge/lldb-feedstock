@@ -27,6 +27,7 @@ source:
         - patches/0006-disable-python-libedit-bits.patch
         - patches/0007-link-libpython3.so-explicitly.patch
         - patches/0008-link-liblldb-with-libpython-harder.patch
+        - patches/defs.diff
 
 build:
   number: 1
