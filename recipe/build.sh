@@ -35,9 +35,6 @@ if [[ "${is_abi3}" == "true" ]]; then
   PY_VER_NODOT="3"
 fi
 
-# Allow unresolved symbols
-export LDFLAGS=${LDFLAGS/-Wl,-z,defs /}
-
 cmake ${CMAKE_ARGS} \
   -G Ninja \
   -DLLDB_ENABLE_PYTHON=ON \
