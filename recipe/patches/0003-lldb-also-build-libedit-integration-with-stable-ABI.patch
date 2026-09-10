@@ -1,0 +1,55 @@
+From 9e273f150e4fc861e0c3c5fbd3e6ed7d3ae64ff3 Mon Sep 17 00:00:00 2001
+From: "H. Vetinari" <h.vetinari@gmx.com>
+Date: Mon, 7 Sep 2026 10:28:49 +0200
+Subject: [PATCH 3/5] [lldb] also build libedit integration with stable ABI
+
+Need to replace include; otherwise, the following defines are not picked up before including `Python.h`
+```
+#if LLDB_ENABLE_PYTHON_LIMITED_API
+#define Py_LIMITED_API LLDB_MINIMUM_PYTHON_VERSION
+#endif
+```
+which affects whether non-stable-ABI symbols get used.
+
+Also need to bump LLDB_MINIMUM_PYTHON_VERSION, because PyMem_RawMalloc used by
+https://github.com/llvm/llvm-project/blob/llvmorg-22.1.8/lldb/source/Plugins/ScriptInterpreter/Python/PythonReadline.cpp
+only was added to the stable ABI in 3.13, see
+https://github.com/python/cpython/blob/v3.14.7/Doc/data/stable_abi.dat#L440
+---
+ .../Plugins/ScriptInterpreter/Python/PythonReadline.h      | 7 +------
+ lldb/source/Plugins/ScriptInterpreter/Python/lldb-python.h | 2 +-
+ 2 files changed, 2 insertions(+), 7 deletions(-)
+
+diff --git a/lldb/source/Plugins/ScriptInterpreter/Python/PythonReadline.h b/lldb/source/Plugins/ScriptInterpreter/Python/PythonReadline.h
+index c9976e79c9d9..e35d55b1f112 100644
+--- a/lldb/source/Plugins/ScriptInterpreter/Python/PythonReadline.h
++++ b/lldb/source/Plugins/ScriptInterpreter/Python/PythonReadline.h
+@@ -9,14 +9,9 @@
+ #ifndef LLDB_SOURCE_PLUGINS_SCRIPTINTERPRETER_PYTHON_PYTHONREADLINE_H
+ #define LLDB_SOURCE_PLUGINS_SCRIPTINTERPRETER_PYTHON_PYTHONREADLINE_H
+ 
+-#include "lldb/Host/Config.h"
++#include "lldb-python.h"
+ 
+ #if LLDB_ENABLE_LIBEDIT && defined(__linux__)
+-// NOTE: Since Python may define some pre-processor definitions which affect the
+-// standard headers on some systems, you must include Python.h before any
+-// standard headers are included.
+-#include "Python.h"
+-
+ // no need to hack into Python's readline module if libedit isn't used.
+ //
+ #define LLDB_USE_LIBEDIT_READLINE_COMPAT_MODULE 1
+diff --git a/lldb/source/Plugins/ScriptInterpreter/Python/lldb-python.h b/lldb/source/Plugins/ScriptInterpreter/Python/lldb-python.h
+index 925c5428ec36..3e0ec568c1eb 100644
+--- a/lldb/source/Plugins/ScriptInterpreter/Python/lldb-python.h
++++ b/lldb/source/Plugins/ScriptInterpreter/Python/lldb-python.h
+@@ -32,7 +32,7 @@ static llvm::Expected<bool> *g_fcxx_modules_workaround [[maybe_unused]];
+ #include <locale>
+ #endif
+ 
+-#define LLDB_MINIMUM_PYTHON_VERSION 0x03080000
++#define LLDB_MINIMUM_PYTHON_VERSION 0x030D0000
+ 
+ // Config.h must be included before Python.h so that
+ // LLDB_ENABLE_PYTHON_LIMITED_API is defined when pyconfig.h selects the Windows

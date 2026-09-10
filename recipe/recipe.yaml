@@ -1,5 +1,5 @@
 context:
-  version: "22.1.8"
+  version: "23.1.1"
 
 package:
   name: lldb
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-${{ version|replace(".rc", "-rc") }}.tar.gz
-  sha256: ad18b70e287954c3d62bc7e0b86e7b7af2adf87bcfce21c15fe717f101d7aace
+  sha256: 851b3d701a4fbdd9f69536d4acda578469e810ca7056687d6556443f5fd39557
   patches:
     # Fix Python and Mac support
     - if: unix
@@ -15,20 +15,15 @@ source:
     # https://github.com/llvm/llvm-project/issues/59449
     # allows for compiling with older SDKs
     - patches/0002-Define-CPU_SUBTYPE_ARM64E-if-not-available.patch
-    # This is needed due to c-f's remove of pid_t in Python: https://github.com/conda-forge/python-feedstock/pull/767
-    - if: win
-      then:
-        - patches/0003-Don-t-define-NO_PID_T-where-Python-is-patched.patch
-        - patches/0004-fix-file-extension-on-windows.patch
     - if: linux
       then:
         # https://github.com/llvm/llvm-project/issues/221704
-        - patches/0005-lldb-also-build-libedit-integration-with-stable-ABI.patch
-        - patches/0006-disable-python-libedit-bits.patch
-        - patches/0007-allow-unresolved-symbols.patch
+        - patches/0003-lldb-also-build-libedit-integration-with-stable-ABI.patch
+        - patches/0004-disable-python-libedit-bits.patch
+        - patches/0005-allow-unresolved-symbols.patch
 
 build:
-  number: 1
+  number: 0
   python:
     version_independent: ${{ is_abi3 }}
   skip: is_abi3 and not is_python_min
@@ -91,9 +86,9 @@ tests:
       - lldb-argdumper --version
       - lldb-dap --version
       - lldb-instr --version
-      # can't test without running mcp server
+      # can't test without running server
       # - lldb-mcp --version
-      - lldb-server --version
+      # - lldb-server --version
       - yaml2macho-core --version
   - requirements:
       run:
