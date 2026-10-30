@@ -1,0 +1,25 @@
+From 74900e1a303ad5540ce6396d3a7bc8c0a660f43a Mon Sep 17 00:00:00 2001
+From: Isuru Fernando <isuruf@gmail.com>
+Date: Tue, 8 Sep 2026 09:07:55 -0700
+Subject: [PATCH 5/5] allow unresolved symbols
+
+Remove -z,defs to allow unresolved symbols when building with
+python limited API. `-z,defs` is set by LLVM and several subprojects
+remove it due to the need to have unresolved symbols.
+---
+ lldb/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lldb/CMakeLists.txt b/lldb/CMakeLists.txt
+index 7f45487c1d2d..9c07a78a95c9 100644
+--- a/lldb/CMakeLists.txt
++++ b/lldb/CMakeLists.txt
+@@ -55,7 +55,7 @@ set(LLDB_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
+ if(uppercase_CMAKE_BUILD_TYPE STREQUAL "DEBUG" )
+   add_definitions(-DLLDB_CONFIGURATION_DEBUG)
+ endif()
+-
++string(REPLACE "-Wl,-z,defs" "" CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS}")
+ if (WIN32)
+   add_definitions(-D_ENABLE_EXTENDED_ALIGNED_STORAGE)
+   if (NOT MSVC)
