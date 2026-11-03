@@ -1,5 +1,5 @@
 context:
-  version: "22.1.8"
+  version: "23.1.5"
 
 package:
   name: lldb
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/llvm/llvm-project/archive/refs/tags/llvmorg-${{ version|replace(".rc", "-rc") }}.tar.gz
-  sha256: ad18b70e287954c3d62bc7e0b86e7b7af2adf87bcfce21c15fe717f101d7aace
+  sha256: 70642a7e44e63c0ceff6624e5fd077b87766e4ed0bcd4a3ea8e3ffa3827ba538
   patches:
     # Fix Python and Mac support
     - if: unix
@@ -28,7 +28,7 @@ source:
         - patches/0007-allow-unresolved-symbols.patch
 
 build:
-  number: 1
+  number: 0
   python:
     version_independent: ${{ is_abi3 }}
   skip: is_abi3 and not is_python_min
@@ -52,7 +52,7 @@ requirements:
     # we're linking to `libpython3.{so,dylib}`
     - libpython
     - if: is_abi3
-      then:  python-abi3
+      then: python-abi3
     - llvm ==${{ version }}
     - llvmdev ==${{ version }}
     - clangdev ==${{ version }}
