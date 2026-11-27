@@ -28,7 +28,7 @@ source:
         - patches/0007-allow-unresolved-symbols.patch
 
 build:
-  number: 1
+  number: 2
   python:
     version_independent: ${{ is_abi3 }}
   skip: is_abi3 and not is_python_min
@@ -52,7 +52,7 @@ requirements:
     # we're linking to `libpython3.{so,dylib}`
     - libpython
     - if: is_abi3
-      then:  python-abi3
+      then: python-abi3
     - llvm ==${{ version }}
     - llvmdev ==${{ version }}
     - clangdev ==${{ version }}
