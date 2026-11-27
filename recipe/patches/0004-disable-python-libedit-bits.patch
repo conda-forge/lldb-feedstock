@@ -1,7 +1,7 @@
-From af8a57a086b770743d29e4fa19ed3178451a92e3 Mon Sep 17 00:00:00 2001
+From 7b8d44f1966636d183ad677425efc266a7d56194 Mon Sep 17 00:00:00 2001
 From: "H. Vetinari" <h.vetinari@gmx.com>
 Date: Mon, 7 Sep 2026 13:52:08 +0200
-Subject: [PATCH 6/7] disable python+libedit bits
+Subject: [PATCH 4/5] disable python+libedit bits
 
 see https://github.com/llvm/llvm-project/issues/221704
 ---
@@ -10,7 +10,7 @@ see https://github.com/llvm/llvm-project/issues/221704
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/lldb/source/Plugins/ScriptInterpreter/Python/PythonReadline.h b/lldb/source/Plugins/ScriptInterpreter/Python/PythonReadline.h
-index 98922568f703..753679d1ee82 100644
+index e35d55b1f112..902c987ee64d 100644
 --- a/lldb/source/Plugins/ScriptInterpreter/Python/PythonReadline.h
 +++ b/lldb/source/Plugins/ScriptInterpreter/Python/PythonReadline.h
 @@ -11,7 +11,7 @@
@@ -22,16 +22,3 @@ index 98922568f703..753679d1ee82 100644
  // no need to hack into Python's readline module if libedit isn't used.
  //
  #define LLDB_USE_LIBEDIT_READLINE_COMPAT_MODULE 1
-diff --git a/lldb/source/Plugins/ScriptInterpreter/Python/lldb-python.h b/lldb/source/Plugins/ScriptInterpreter/Python/lldb-python.h
-index 2ebce36fbb4a..5f61f4df8f99 100644
---- a/lldb/source/Plugins/ScriptInterpreter/Python/lldb-python.h
-+++ b/lldb/source/Plugins/ScriptInterpreter/Python/lldb-python.h
-@@ -45,7 +45,7 @@ static llvm::Expected<bool> *g_fcxx_modules_workaround [[maybe_unused]];
- #include <locale>
- #endif
- 
--#define LLDB_MINIMUM_PYTHON_VERSION 0x030D0000
-+#define LLDB_MINIMUM_PYTHON_VERSION 0x03080000
- 
- #if LLDB_ENABLE_PYTHON_LIMITED_API
- // If defined, LLDB will be ABI-compatible with all Python 3 releases from the

@@ -1,7 +1,7 @@
-From ac0f4ad95245fca6de8745ab73596b3446982c45 Mon Sep 17 00:00:00 2001
+From a4b8ce98d8158e11eeb999938194ff84edd9d9bf Mon Sep 17 00:00:00 2001
 From: Isuru Fernando <isuruf@gmail.com>
 Date: Thu, 9 Apr 2020 18:08:39 +0000
-Subject: [PATCH 1/7] Remove linking liblldb to libpython
+Subject: [PATCH 1/5] Remove linking liblldb to libpython
 
 liblldb doubles as an extension module too, but python
 executable is linked to static python. When the extension module
@@ -17,17 +17,15 @@ Thanks to feedback from @saulshanabrook
 Co-authored-by: Uwe L. Korn <uwelk@xhochy.com>
 Co-authored-by: H. Vetinari <h.vetinari@gmx.com>
 ---
- lldb/cmake/modules/AddLLDB.cmake                            | 3 +++
- lldb/source/API/CMakeLists.txt                              | 6 ++++++
- lldb/source/Plugins/ScriptInterpreter/Python/CMakeLists.txt | 1 -
- .../ScriptInterpreter/Python/Interfaces/CMakeLists.txt      | 1 -
- 4 files changed, 9 insertions(+), 2 deletions(-)
+ lldb/cmake/modules/AddLLDB.cmake | 3 +++
+ lldb/source/API/CMakeLists.txt   | 6 ++++++
+ 2 files changed, 9 insertions(+)
 
 diff --git a/lldb/cmake/modules/AddLLDB.cmake b/lldb/cmake/modules/AddLLDB.cmake
-index 6493df27f38d..daf33e219563 100644
+index b6ad8d46380b..40988b0e121f 100644
 --- a/lldb/cmake/modules/AddLLDB.cmake
 +++ b/lldb/cmake/modules/AddLLDB.cmake
-@@ -161,6 +161,9 @@ function(add_lldb_executable name)
+@@ -386,6 +386,9 @@ function(add_lldb_executable name)
    endif()
  
    list(APPEND LLVM_LINK_COMPONENTS ${ARG_LINK_COMPONENTS})
@@ -38,10 +36,10 @@ index 6493df27f38d..daf33e219563 100644
      ${pass_NO_INSTALL_RPATH}
      ${ARG_UNPARSED_ARGUMENTS}
 diff --git a/lldb/source/API/CMakeLists.txt b/lldb/source/API/CMakeLists.txt
-index 186f3b3b6529..9718372920b3 100644
+index 15c52aab4136..9fb28b42e7cb 100644
 --- a/lldb/source/API/CMakeLists.txt
 +++ b/lldb/source/API/CMakeLists.txt
-@@ -266,6 +266,12 @@ elseif (LLDB_EXPORT_ALL_SYMBOLS)
+@@ -249,6 +249,12 @@ elseif (LLDB_EXPORT_ALL_SYMBOLS OR LLDB_ENABLE_DYNAMIC_SCRIPTINTERPRETERS)
  endif()
  
  if(NOT WIN32 OR MINGW)
@@ -54,26 +52,3 @@ index 186f3b3b6529..9718372920b3 100644
    set_target_properties(liblldb
      PROPERTIES
      OUTPUT_NAME lldb
-diff --git a/lldb/source/Plugins/ScriptInterpreter/Python/CMakeLists.txt b/lldb/source/Plugins/ScriptInterpreter/Python/CMakeLists.txt
-index 3d09cea46446..6d57c0799524 100644
---- a/lldb/source/Plugins/ScriptInterpreter/Python/CMakeLists.txt
-+++ b/lldb/source/Plugins/ScriptInterpreter/Python/CMakeLists.txt
-@@ -37,6 +37,5 @@ add_lldb_library(lldbPluginScriptInterpreterPython PLUGIN
-     lldbTarget
-     lldbValueObject
-     lldbPluginScriptInterpreterPythonInterfaces
--    ${Python3_LIBRARIES}
-     ${LLDB_LIBEDIT_LIBS}
-   )
-diff --git a/lldb/source/Plugins/ScriptInterpreter/Python/Interfaces/CMakeLists.txt b/lldb/source/Plugins/ScriptInterpreter/Python/Interfaces/CMakeLists.txt
-index 50569cdefaaf..106467864694 100644
---- a/lldb/source/Plugins/ScriptInterpreter/Python/Interfaces/CMakeLists.txt
-+++ b/lldb/source/Plugins/ScriptInterpreter/Python/Interfaces/CMakeLists.txt
-@@ -39,7 +39,6 @@ add_lldb_library(lldbPluginScriptInterpreterPythonInterfaces PLUGIN
-     lldbHost
-     lldbInterpreter
-     lldbTarget
--    ${Python3_LIBRARIES}
-     ${LLDB_LIBEDIT_LIBS}
-   )
- 
