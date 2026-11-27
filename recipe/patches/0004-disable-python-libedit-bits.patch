@@ -22,16 +22,3 @@ index e35d55b1f112..902c987ee64d 100644
  // no need to hack into Python's readline module if libedit isn't used.
  //
  #define LLDB_USE_LIBEDIT_READLINE_COMPAT_MODULE 1
-diff --git a/lldb/source/Plugins/ScriptInterpreter/Python/lldb-python.h b/lldb/source/Plugins/ScriptInterpreter/Python/lldb-python.h
-index 3e0ec568c1eb..925c5428ec36 100644
---- a/lldb/source/Plugins/ScriptInterpreter/Python/lldb-python.h
-+++ b/lldb/source/Plugins/ScriptInterpreter/Python/lldb-python.h
-@@ -32,7 +32,7 @@ static llvm::Expected<bool> *g_fcxx_modules_workaround [[maybe_unused]];
- #include <locale>
- #endif
- 
--#define LLDB_MINIMUM_PYTHON_VERSION 0x030D0000
-+#define LLDB_MINIMUM_PYTHON_VERSION 0x03080000
- 
- // Config.h must be included before Python.h so that
- // LLDB_ENABLE_PYTHON_LIMITED_API is defined when pyconfig.h selects the Windows
